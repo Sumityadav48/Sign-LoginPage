@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp and Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-form" >
+            <h1>Sign up</h1>
+            <form  onsubmit="return validate()" action="login.html">
+                <input type="text" id="name" placeholder="Name">
+                <input type="email" id="email" placeholder="Email" >
+                <input type="password" id="pwd" placeholder="Password" >
+                <input type="tel" id="phone" placeholder="Phone No.">
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function validate() {
+            var username = document.getElementById("name");
+            var email = document.getElementById("email");
+            var password = document.getElementById("pwd");
+            var mobile = document.getElementById("phone");
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+            if(username.value.trim()==""){
+                alert("username should not be blank");
+                return false;
+            }
+            else if(password.value.trim()==""){
+                alert(" password should not be blank");
+                return false;
+            }
+            else if(email.value.trim()==""){
+                alert(" email should not be blank");
+                return false;
+            }
+            else if(mobile.value.trim()==""){
+                alert(" Phone number should not be blank");
+                return false;
+            }
+             else if(password.value.length<6){
+                alert("password must be at least 6 characters")
+                return false;
+            }
+    
+            else if (emailPattern.test(email)) {
+                alert("Invalid email address.");
+                return false;
+            }
+            
+            else if(mobile.value.length!=10||isNaN(mobile.value) ){
+                alert("mobile number must be 10 numbers");
+                return false;
+            }
+            
+            else{
+                alert(" Submitted Successfully");
+                 return true;
+            }
+        };
+    </script>
+</body>
+</html>
